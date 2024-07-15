@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Members</h1>
+    <div class="">
+        <ol class="list-group">
+            {% for member in object_list %}
+                <div class="row">
+                    <div class="col">
+                        <li class="list-group-item"><span></span> {{ member.last_name }} {{ member.get_race_display }}
+                        </li>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-primary" href="{% url "member_retrieve" member.id %}">View</a>
+                        <a class="btn btn-warning" href="{% url "member_update" member.id %}">Edit</a>
+                        <a class="btn btn-danger" href="{% url "member_delete" member.id %}">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </ol>
+    </div>
+    <div class=""><a class="btn btn-primary" href="{% url 'member_create' %}" class="badge badge-primary">Create New
+        Member</a>
+        <a class="btn btn-primary" href="{% url 'team_list' %}" class="badge badge-primary">Teams</a></div>
+{% endblock %}

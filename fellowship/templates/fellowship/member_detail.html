@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Member Details</h1>
+    <h2>Name: {{ object.first }} {{ object.last_name }}</h2>
+    <h3>Race: {{ object.race }} </h3>
+    <div class=""><a class="btn btn-primary" href="{% url 'team_retrieve' object.team.id %}"
+                     class="badge badge-primary">Team</a></div>
+{% endblock %}

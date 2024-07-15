@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Teams</h1>
+    <ol class="list-group">
+        {% for team in teams %}
+            <li class="list-group-item"><a href="{% url "team_retrieve" team.id %}">{{ team.name }}</a></li>
+        {% endfor %}
+    </ol>
+    <div class=""><a class="btn btn-primary" href="{% url 'team_create' %}" class="badge badge-primary">Create New
+        Team</a></div>
+
+{% endblock %}

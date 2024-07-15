@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Team Details</h1>
+    <h2>Name: {{ object.name }}</h2>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Race</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for member in object.member_set.all %}
+            <tr>
+                <th scope="row">{{ member.id }}</th>
+                <td>{{ member.first_name }}</td>
+                <td>{{ member.last_name }}</td>
+                <td>{{ member.get_race_display }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url "member_retrieve" member.id %}">View</a>
+                    <a class="btn btn-warning" href="{% url "member_update" member.id %}">Edit</a>
+                    <a class="btn btn-danger" href="{% url "member_delete" member.id %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <div class=""><a class="btn btn-primary" href="{% url 'member_create' %}" class="badge badge-primary">Create New
+        Member</a></div>
+{% endblock %}
